@@ -1,3 +1,6 @@
+'''every linear transformation is a matrix transformation. 
+the difference between the general linear transformation is that the matrices here might become bigger, or smaller'''
+
 RULE_LIBRARY = {
     "identity": [
         "unchanged"

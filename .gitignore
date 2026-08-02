@@ -1,4 +1,4 @@
-
+output_images/
 .venv/
 .idea/
 .vscode/
@@ -223,3 +223,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+.gitignore
+.gitignore
+.DS_Store
+.gitignore
+training_inference_Tin/inference_tin.py
+.gitignore
+.gitignore
+training_inference_Tin/test_ollma.py
+.gitignore
