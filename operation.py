@@ -135,7 +135,7 @@ def tile(grid, rows=1, cols=1):
 
 def apply_operation(grid, operation):
     name = operation["name"]
-    params = deepcopy(operation.get("parameters", {}))
+    params = operation.get("parameters", {})
 
     if name == "identity":
         return identity(grid)
