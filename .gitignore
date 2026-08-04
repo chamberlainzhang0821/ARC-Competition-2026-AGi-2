@@ -1,4 +1,5 @@
-output_images/
+output_images_evaluation/
+output_images_training/
 .venv/
 .idea/
 .vscode/
@@ -232,3 +233,11 @@ training_inference_Tin/inference_tin.py
 .gitignore
 training_inference_Tin/test_ollma.py
 .gitignore
+arc_rule_analysis_evaluation.csv
+.gitignore
+arc_rule_analysis_training.csv
+arc_rule_analysis.csv
+arc_rule_analysis.csv
+arc_rule_analysis.csv
+arc_rule_analysis.csv
+arc_rule_analysis.csv

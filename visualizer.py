@@ -15,6 +15,16 @@ cmap = ListedColormap(ARC_COLORS)
 # shared set of light colors for text annotation
 LIGHT_COLORS = {3, 4, 5, 7, 8}
 
+def get_diff_grid(input_grid, output_grid):
+    """
+    计算输入和输出矩阵的差集。
+    只要形状一样，就直接把不一样的格子提取出来，一样的地方全变成黑色 (0)
+    """
+    inp = np.array(input_grid)
+    out = np.array(output_grid)
+    diff = np.where(inp != out, out, 0)
+    return diff
+
 def draw_single_grid(ax, grid, title):
     grid = np.array(grid)
     rows, cols = grid.shape
@@ -25,7 +35,7 @@ def draw_single_grid(ax, grid, title):
     ax.grid(True, color="gray", linewidth=0.5)
     ax.set_title(title, fontsize=10)
 
-    #  add text annotations for each cell
+    # add text annotations for each cell
     for r in range(rows):
         for c in range(cols):
             val = grid[r, c]
@@ -38,10 +48,23 @@ def draw_single_grid(ax, grid, title):
 
 def show_grid_pair(input_grid, output_grid, title="Grid Pair", save_path=None):
     """save_path: if provided, saves the figure to this path; otherwise, displays it."""
-    fig, axes = plt.subplots(1, 2, figsize=(8, 4))
+    inp = np.array(input_grid)
+    out = np.array(output_grid)
     
-    draw_single_grid(axes[0], input_grid, "Input")
-    draw_single_grid(axes[1], output_grid, "Output")
+    # 如果形状相同，生成 1x3 的图（加入 Diff）
+    if inp.shape == out.shape:
+        fig, axes = plt.subplots(1, 3, figsize=(12, 4))
+        draw_single_grid(axes[0], inp, "Input")
+        draw_single_grid(axes[1], out, "Output")
+        
+        diff = get_diff_grid(inp, out)
+        draw_single_grid(axes[2], diff, "Diff (Changes)")
+        
+    # 如果形状不同（例如裁剪、放大），只能生成 1x2 的图
+    else:
+        fig, axes = plt.subplots(1, 2, figsize=(8, 4))
+        draw_single_grid(axes[0], inp, "Input")
+        draw_single_grid(axes[1], out, "Output")
     
     plt.suptitle(title, fontsize=12, fontweight='bold')
     plt.tight_layout()
