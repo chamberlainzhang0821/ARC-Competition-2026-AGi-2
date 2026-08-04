@@ -21,7 +21,7 @@ from rule_detector import compare_objects, detect_all_rules
 # ==========================================
 SAVE_IMAGES = True       # Set to False if you only want the CSV report (much faster)
 MAX_TASKS = 1200         # Maximum number of tasks to process (set to None for all)
-OUTPUT_DIR = "output_images_evaluation"  
+OUTPUT_DIR = "output_images_evaluation"  # Directory to save visualizations
 CSV_OUTPUT_DIR = "output_csv_evaluation"
 DATASET_PATH = os.path.join("Raw Data", "arc-agi_evaluation_challenges.json")
 
