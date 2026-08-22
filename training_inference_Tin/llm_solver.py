@@ -12,6 +12,10 @@ from code_executor import (
     run_on_test_set
 )
 
+# this is the entry point for the ARC benchmark batch run, which processes 50 tasks in sequence and logs the results.
+
+
+
 # ==========================================
 # 0. Logger setup (Tee Terminal Output to File)
 # ==========================================
